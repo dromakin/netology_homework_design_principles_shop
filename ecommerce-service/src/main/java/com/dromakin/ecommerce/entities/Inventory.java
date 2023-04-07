@@ -25,10 +25,9 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ApiModelProperty(notes = "Unique code of the product")
-    @Column(name = "product_code", nullable = false, unique = true)
+    @Column(name = "code", nullable = false, unique = true)
     private String productCode;
     @ApiModelProperty(notes = "Available Quantity of the product", value = "0")
-    @Column(name = "quantity")
     private Integer availableQuantity = 0;
     @ApiModelProperty(notes = "Need Quantity of the product", value = "0")
     private Integer needQuantity = 0;

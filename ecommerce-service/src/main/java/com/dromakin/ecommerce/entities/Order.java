@@ -27,15 +27,22 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ApiModelProperty(notes = "customer name")
+    @Column(nullable = false)
     private String customerName;
     @ApiModelProperty(notes = "customer email")
+    @Column(nullable = false)
     private String customerEmail;
     @ApiModelProperty(notes = "customer address")
+    @Column(nullable = false)
     private String customerAddress;
     @ApiModelProperty(notes = "active or archived (no active)", value = "true")
     private boolean active = true;
-    @ApiModelProperty(notes = "Delivered, Returned, Canceled, InDelivery, Wrapping, Checking", value = "WRAPPING")
+    @ApiModelProperty(notes = "Delivered, Returned, Canceled, InDelivery, Wrapping, Checking", value = "Checking")
+    @Enumerated(EnumType.STRING)
     private OrderStatus status = OrderStatus.CHECKING;
     @ApiModelProperty(notes = "List of product codes")
+    @ElementCollection
+    @CollectionTable(name="Items", joinColumns=@JoinColumn(name="orders_id"))
+    @Column(name="items")
     private List<String> items;
 }

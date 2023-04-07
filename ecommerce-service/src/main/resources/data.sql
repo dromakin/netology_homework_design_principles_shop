@@ -32,7 +32,7 @@ insert into products(id, code, name, description, price, manufacturer) VALUES
 ;
 
 DELETE FROM inventory;
-insert into inventory(id, productCode, availableQuantity, needQuantity) VALUES
+insert into inventory(id, code, available_quantity, need_quantity) VALUES
        (1, 'P1001', 10, 0),
        (2, 'P1002', 15, 10),
        (3, 'P1003', 0, 10),
