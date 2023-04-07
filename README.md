@@ -63,4 +63,6 @@
 
 Нужные функции для [InventoryServiceImpl класса](ecommerce-service/src/main/java/com/dromakin/ecommerce/services/InventoryServiceImpl.java) я вынес в [InventoryUtilImpl.java](ecommerce-service/src/main/java/com/dromakin/ecommerce/utils/InventoryUtilImpl.java) класс.
 
+## Дополнительно
+
 

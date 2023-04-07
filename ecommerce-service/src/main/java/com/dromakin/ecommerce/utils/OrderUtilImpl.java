@@ -16,10 +16,16 @@ import com.dromakin.ecommerce.entities.Order;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
 public class OrderUtilImpl implements OrderUtil {
+
+    @Override
+    public Integer generatorRandomNumber(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
 
     @Override
     public List<String> getProductCodesFromOrders(List<Order> orderList) {

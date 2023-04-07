@@ -1,6 +1,9 @@
 package com.dromakin.ecommerce.config;
 
 
+import org.jobrunr.jobs.mappers.JobMapper;
+import org.jobrunr.storage.InMemoryStorageProvider;
+import org.jobrunr.storage.StorageProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -15,6 +18,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 public class SwaggerConfig {
 
+    @Bean
+    public StorageProvider storageProvider(JobMapper jobMapper) {
+        InMemoryStorageProvider storageProvider = new InMemoryStorageProvider();
+        storageProvider.setJobMapper(jobMapper);
+        return storageProvider;
+    }
 
     @Bean
     public Docket productApi() {

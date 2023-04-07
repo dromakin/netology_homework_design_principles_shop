@@ -13,10 +13,13 @@
 package com.dromakin.ecommerce.dto;
 
 import com.dromakin.ecommerce.web.models.OrderStatus;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
 public class OrderStatusDto {
+    @ApiModelProperty(notes = "order id")
     private Long id;
+    @ApiModelProperty(notes = "order status")
     private OrderStatus status;
 }
