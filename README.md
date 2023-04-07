@@ -64,3 +64,92 @@
 Нужные функции для [InventoryServiceImpl класса](ecommerce-service/src/main/java/com/dromakin/ecommerce/services/InventoryServiceImpl.java) я вынес в [InventoryUtilImpl.java](ecommerce-service/src/main/java/com/dromakin/ecommerce/utils/InventoryUtilImpl.java) класс.
 
 
+## Дополнительно
+Как запустить для проверки?
+
+```shell
+docker-compose up
+```
+![0.png](docs%2F0.png)
+![1.png](docs%2F1.png)
+
+
+### Swagger API
+http://localhost:8081/swagger-ui.html
+
+![2.png](docs%2F2.png)
+![3.png](docs%2F3.png)
+
+#### Задания
+
+* Вывод доступных для покупки товаров
+
+http://localhost:8081/swagger-ui.html#!/inventory-controller/readAllUsingGET
+
+Фильтр по уникальному значению:
+
+http://localhost:8081/swagger-ui.html#!/inventory-controller/readByCodeUsingGET
+
+* Фильтрация товаров по ключевым словам, ценам, производителям
+
+http://localhost:8081/swagger-ui.html#!/product-controller/readByNameUsingGET_1
+
+http://localhost:8081/swagger-ui.html#!/product-controller/getByPriceUsingPOST
+
+http://localhost:8081/swagger-ui.html#!/product-controller/readByManufacturerIdUsingGET
+
+* Составление продуктовой корзины пользователя
+
+http://localhost:8081/swagger-ui.html#!/order-controller/readUsingGET_3
+
+* Трекинг заказа в системе доставки
+
+http://localhost:8081/swagger-ui.html#!/order-controller/getActiveOrdersUsingGET
+
+ACTIVE статусы: InDelivery, Wrapping, Checking (default)
+
+ARCHIVED статусы: Delivered, Returned, Canceled
+
+Посмотреть активные статусы:
+http://localhost:8081/swagger-ui.html#!/order-controller/getActiveOrdersUsingGET
+
+Посмотреть архивные статусы:
+http://localhost:8081/swagger-ui.html#!/order-controller/getArchivedOrdersUsingGET
+
+Варианты доставки:
+- Checking -> Wrapping -> InDelivery -> Delivered (обычный заказ)
+- Checking -> Wrapping -> InDelivery -> Returned (возврат)
+- Checking -> Canceled (отменили заказ)
+
+
+Изменение статуса происходит в ручном режиме.
+
+http://localhost:8081/swagger-ui.html#!/order-controller/updateStatusUsingPOST
+
+Сторонний сервис доставки должен делать запрос на наш REST API.
+
+
+* Возврат заказа, повтороение заказа
+
+Так как данные из таблицы не удаляются и меняются статусы с ACTIVE на ARCHIVED.
+
+То для повтора заказа нам необходимо просто поменять статус и еще раз его выполнить.
+
+На рекомендательную систему это никак не повлияет.
+
+* Система рейтинга для товаров
+
+http://localhost:8081/swagger-ui.html#!/inventory-controller/ratingUsingGET
+
+http://localhost:8081/swagger-ui.html#!/inventory-controller/ratingUsingGET_1
+
+* Простая рекомендательная система для покупок
+
+http://localhost:8081/swagger-ui.html#!/order-controller/getRecommendationsUsingPOST
+
+http://localhost:8081/swagger-ui.html#!/order-controller/getRecommendationsUsingGET
+
+## Проверка API через POSTMAN:
+[Netology.postman_collection.json](Netology.postman_collection.json)
+
+![4.png](docs%2F4.png)

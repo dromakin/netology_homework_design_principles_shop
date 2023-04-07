@@ -1,0 +1,704 @@
+{
+	"info": {
+		"_postman_id": "ca6fed7d-30cc-4f38-86cc-d32ebeff7436",
+		"name": "Netology",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9165319"
+	},
+	"item": [
+		{
+			"name": "ecommerce shop (homework: Magic, dry, solid)",
+			"item": [
+				{
+					"name": "manufacture",
+					"item": [
+						{
+							"name": "Create manufacture",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Produce milk products\",\n    \"name\": \"LTD MilkProducts\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/manufactures",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"manufactures"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get manufacture",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/manufactures",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"manufactures"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get manuf by id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8081/api/manufactures/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"manufactures",
+										"1"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update manuf by id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Produce milk products\",\n    \"name\": \"LTD Wisher Milk Products\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/manufactures/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"manufactures",
+										"2"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete manuf by id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8081/api/manufactures/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"manufactures",
+										"1"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "Create products",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"description\": \"Молоко 3%\",\n        \"manufacturer\": 2,\n        \"code\": \"P2001\",\n        \"name\": \"Ультрапастеризованное Молоко\",\n        \"price\": 10\n    },\n    {\n        \"description\": \"Молоко цельное 5%\",\n        \"manufacturer\": 3,\n        \"code\": \"P3001\",\n        \"name\": \"Цельное Молоко\",\n        \"price\": 15\n    },\n    {\n        \"description\": \"Йогурт ложковый\",\n        \"manufacturer\": 2,\n        \"code\": \"P2002\",\n        \"name\": \"Йогурт\",\n        \"price\": 20\n    },\n    {\n        \"description\": \"Йогурт ложковый с клубникой из цельного молока\",\n        \"manufacturer\": 3,\n        \"code\": \"P3002\",\n        \"name\": \"Йогурт ложковый с клубникой\",\n        \"price\": 30\n    },\n    {\n        \"description\": \"Питьевой йогурт с персиком из цельного молока\",\n        \"manufacturer\": 3,\n        \"code\": \"P3003\",\n        \"name\": \"Питьевой йогурт с персиком\",\n        \"price\": 30\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/products/many",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"products",
+										"many"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get price of products",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"highPrice\": 15,\n  \"lowPrice\": 0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/products/price",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"products",
+										"price"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get products by manufacturer id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/products/manufacturer/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"products",
+										"manufacturer",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get products by name",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"description\": \"Молоко 3%\",\n        \"manufacturer\": 1,\n        \"name\": \"Ультрапастеризованное Молоко\",\n        \"price\": 10\n    },\n    {\n        \"description\": \"Молоко цельное 5%\",\n        \"manufacturer\": 2,\n        \"name\": \"Цельное Молоко\",\n        \"price\": 15\n    },\n    {\n        \"description\": \"Йогурт ложковый\",\n        \"manufacturer\": 1,\n        \"name\": \"Йогурт\",\n        \"price\": 20\n    },\n    {\n        \"description\": \"Йогурт ложковый с клубникой из цельного молока\",\n        \"manufacturer\": 2,\n        \"name\": \"Йогурт ложковый с клубникой\",\n        \"price\": 30\n    },\n    {\n        \"description\": \"Питьевой йогурт с персиком из цельного молока\",\n        \"id\": 5,\n        \"manufacturer\": 2,\n        \"name\": \"Питьевой йогурт с персиком\",\n        \"price\": 30\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/products/name/Milk",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"products",
+										"name",
+										"Milk"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get products by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/products/id/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"products",
+										"id",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update product",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Молоко 3%\",\n    \"manufacturer\": 2,\n    \"name\": \"Ультрапастеризованное Молоко\",\n    \"price\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Молоко 3%\",\n    \"manufacturer\": 3,\n    \"name\": \"Ультрапастеризованное Молоко\",\n    \"price\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Inventory",
+					"item": [
+						{
+							"name": "get inventory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/inventory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"inventory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get inventory by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/inventory/id/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"inventory",
+										"id",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get inventory rating by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/inventory/rating/id/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"inventory",
+										"rating",
+										"id",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get inventory rating by code",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/inventory/rating/code/P1001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"inventory",
+										"rating",
+										"code",
+										"P1001"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "order",
+					"item": [
+						{
+							"name": "get orders",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update status in order",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"status\": \"WRAPPING\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/order/status",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"order",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete order",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/order/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"order",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create order",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.sendRequest({",
+											"    url: 'http://localhost:8081/api/order',",
+											"    method: 'POST',",
+											"    header: { 'content-type': 'application/json' },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify({",
+											"  \"customerAddress\": \"4118 Constellation Rd, Lompoc, California 93436, USA\",",
+											"  \"customerEmail\": \"products-shop@shop.ru\",",
+											"  \"customerName\": \"Shop Products\",",
+											"  \"items\": [",
+											"    \"P2001\",",
+											"    \"P2002\",",
+											"    \"P2003\",",
+											"    \"P2004\",",
+											"    \"P2005\",",
+											"    \"P2006\",",
+											"    \"P2007\",",
+											"    \"P2008\"",
+											"  ]",
+											"})",
+											"    }",
+											"}, function (err, res) {",
+											"    console.log(res);",
+											"});",
+											"",
+											"",
+											"pm.sendRequest({",
+											"    url: 'http://localhost:8081/api/order',",
+											"    method: 'POST',",
+											"    header: { 'content-type': 'application/json' },",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify({",
+											"  \"customerAddress\": \"4118 Constellation Rd, Lompoc, California 93436, USA\",",
+											"  \"customerEmail\": \"products-shop@shop.ru\",",
+											"  \"customerName\": \"Shop Products\",",
+											"  \"items\": [",
+											"    \"P3001\",",
+											"    \"P3002\",",
+											"    \"P3003\",",
+											"    \"P3004\",",
+											"    \"P3005\"",
+											"  ]",
+											"})",
+											"    }",
+											"}, function (err, res) {",
+											"    console.log(res);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerAddress\": \"4118 Constellation Rd, Lompoc, California 93436, USA\",\n  \"customerEmail\": \"products-shop@shop.ru\",\n  \"customerName\": \"Shop Products\",\n  \"items\": [\n    \"P1001\",\n    \"P1002\",\n    \"P1003\",\n    \"P1004\",\n    \"P1005\",\n    \"P1006\",\n    \"P1007\",\n    \"P1008\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
