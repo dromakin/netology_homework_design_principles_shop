@@ -75,8 +75,8 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<List<Product>> read(
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<Product>> readByName(
             @ApiParam(name = "Name of product", required = true)
             @PathVariable String name
     ) {
@@ -89,8 +89,8 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Product> read(
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Product> readById(
             @ApiParam(name = "Id of product", required = true)
             @PathVariable Long id
     ) {

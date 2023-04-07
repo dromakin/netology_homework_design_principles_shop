@@ -63,7 +63,7 @@ public class InventoryController {
     }
 
     @PostMapping("/many")
-    public ResponseEntity<List<Inventory>> create(
+    public ResponseEntity<List<Inventory>> createMany(
             @ApiParam(name = "List of inventory", required = true)
             @Valid @RequestBody List<Inventory> inventoryList
     ) {
@@ -78,7 +78,7 @@ public class InventoryController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Inventory>> read() {
+    public ResponseEntity<List<Inventory>> readAll() {
         List<Inventory> inventoryList = inventoryService.fetchInventoryStocks();
 
         if (inventoryList == null) {
@@ -88,8 +88,8 @@ public class InventoryController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Inventory> read(
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Inventory> readById(
             @ApiParam(name = "Inventory id", required = true)
             @PathVariable Long id
     ) {
@@ -101,8 +101,8 @@ public class InventoryController {
         }
     }
 
-    @GetMapping("/{code}")
-    public ResponseEntity<Inventory> read(
+    @GetMapping("/code/{code}")
+    public ResponseEntity<Inventory> readByCode(
             @ApiParam(name = "Inventory id", required = true)
             @PathVariable String code
     ) {
@@ -138,7 +138,7 @@ public class InventoryController {
     }
 
     // special
-    @GetMapping("/add/{id}")
+    @GetMapping("/add/id/{id}")
     public ResponseEntity<Inventory> addInventory(
             @ApiParam(name = "Inventory id", required = true)
             @PathVariable Long id
@@ -151,7 +151,7 @@ public class InventoryController {
         }
     }
 
-    @GetMapping("/add/{code}")
+    @GetMapping("/add/code/{code}")
     public ResponseEntity<Inventory> addInventory(
             @ApiParam(name = "Inventory id", required = true)
             @PathVariable String code
@@ -164,7 +164,7 @@ public class InventoryController {
         }
     }
 
-    @GetMapping("/sell/{id}")
+    @GetMapping("/sell/id/{id}")
     public ResponseEntity<Inventory> sellInventory(
             @ApiParam(name = "Inventory id", required = true)
             @PathVariable Long id
@@ -177,7 +177,7 @@ public class InventoryController {
         }
     }
 
-    @GetMapping("/sell/{code}")
+    @GetMapping("/sell/code/{code}")
     public ResponseEntity<Inventory> sellInventory(
             @ApiParam(name = "Inventory id", required = true)
             @PathVariable String code
@@ -191,7 +191,7 @@ public class InventoryController {
     }
 
     // Rating
-    @GetMapping("/rating/{id}")
+    @GetMapping("/rating/id/{id}")
     public ResponseEntity<ProductRatingResponse> rating(
             @ApiParam(name = "Inventory id", required = true)
             @PathVariable Long id
@@ -204,7 +204,7 @@ public class InventoryController {
         }
     }
 
-    @GetMapping("/rating/{code}")
+    @GetMapping("/rating/code/{code}")
     public ResponseEntity<ProductRatingResponse> rating(
             @ApiParam(name = "Inventory id", required = true)
             @PathVariable String code

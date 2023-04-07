@@ -78,7 +78,7 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Order> read(
             @ApiParam(name = "Order id", required = true)
             @PathVariable Long id
@@ -92,7 +92,7 @@ public class OrderController {
     }
 
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<List<Order>> readByName(
             @ApiParam(name = "Customer name in Order", required = true)
             @PathVariable String name
@@ -106,7 +106,7 @@ public class OrderController {
     }
 
 
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public ResponseEntity<List<Order>> readByEmail(
             @ApiParam(name = "Customer email in Order", required = true)
             @PathVariable String email
@@ -120,7 +120,7 @@ public class OrderController {
     }
 
 
-    @GetMapping("/read")
+    @GetMapping("/customer")
     public ResponseEntity<List<Order>> readByNameAndEmail(
             @ApiParam(name = "Customer name in Order", required = true)
             @RequestParam String name,
@@ -178,7 +178,7 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/items/{id}")
+    @GetMapping("/items/id/{id}")
     public ResponseEntity<List<String>> getOrderItems(
             @ApiParam(name = "Order id", required = true)
             @PathVariable Long id
@@ -211,7 +211,7 @@ public class OrderController {
     }
 
 
-    @GetMapping("/recommendations/{id}")
+    @GetMapping("/recommendations/id/{id}")
     public ResponseEntity<List<String>> getRecommendations(
             @ApiParam(name = "Order id", required = true)
             @PathVariable Long id
