@@ -19,7 +19,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "ecommerce")
+@Table(name = "manufacturer")
 public class Manufacturer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
