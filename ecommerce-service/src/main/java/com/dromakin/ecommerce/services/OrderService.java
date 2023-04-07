@@ -13,6 +13,7 @@
 package com.dromakin.ecommerce.services;
 
 import com.dromakin.ecommerce.entities.Order;
+import com.dromakin.ecommerce.web.models.OrderFinalPrice;
 import com.dromakin.ecommerce.web.models.OrderStatus;
 
 import java.util.List;
@@ -34,9 +35,7 @@ public interface OrderService {
     // special
     // active or archived
     List<Order> getActiveOrders();
-    List<Order> getActiveOrdersAndId(Long id);
     List<Order> getArchiveOrders();
-    List<Order> getArchiveOrdersAndId(Long id);
 
     // get Products code by id Order
     List<String> getOrderItemsById(Long id);
@@ -47,4 +46,7 @@ public interface OrderService {
 
     // Delivered, Returned, Canceled, InDelivery, Wrapping, Checking
     Order updateStatusOrderById(Long id, OrderStatus status);
+
+    // price
+    OrderFinalPrice getFinalPrice(Long id);
 }

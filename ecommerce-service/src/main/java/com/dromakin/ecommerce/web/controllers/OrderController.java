@@ -12,12 +12,12 @@
  */
 package com.dromakin.ecommerce.web.controllers;
 
-
 import com.dromakin.ecommerce.dto.OrderRecommendationsDto;
 import com.dromakin.ecommerce.dto.OrderStatusDto;
 import com.dromakin.ecommerce.entities.Order;
-import com.dromakin.ecommerce.web.models.OrderStatus;
 import com.dromakin.ecommerce.services.OrderService;
+import com.dromakin.ecommerce.web.models.OrderFinalPrice;
+import com.dromakin.ecommerce.web.models.OrderStatus;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -43,7 +42,6 @@ public class OrderController {
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
-
 
     // Standard
     @PostMapping("")
@@ -197,12 +195,7 @@ public class OrderController {
             @ApiParam(name = "Order status json", required = true)
             @Valid @RequestBody OrderStatusDto orderStatusDto
     ) {
-        Order orderDb = orderService.fetchOrderById(orderStatusDto.getId());
-
-        if (Arrays.asList(OrderStatus.values()).contains(orderStatusDto.getStatus())) {
-            orderDb.setStatus(orderStatusDto.getStatus());
-        }
-
+        Order orderDb = orderService.updateStatusOrderById(orderStatusDto.getId(), OrderStatus.getStatusByString(orderStatusDto.getStatus()));
         if (orderDb == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -239,6 +232,21 @@ public class OrderController {
             return ResponseEntity.notFound().build();
         } else {
             return ResponseEntity.ok(orderItemsList);
+        }
+    }
+
+    // price
+    @GetMapping("/price/id/{id}")
+    public ResponseEntity<OrderFinalPrice> getFinalPriceById(
+            @ApiParam(name = "Order id", required = true)
+            @PathVariable Long id
+    ) {
+        OrderFinalPrice orderFinalPrice = orderService.getFinalPrice(id);
+
+        if (orderFinalPrice == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(orderFinalPrice);
         }
     }
 

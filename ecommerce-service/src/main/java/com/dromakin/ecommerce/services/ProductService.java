@@ -24,7 +24,9 @@ public interface ProductService {
 
     List<Product> fetchProducts();
     List<Product> fetchProductsByName(String name);
+    Product fetchProductsByCode(String code);
     List<Product> fetchProductsByManufacturerId(Long id);
+    List<Product> fetchProductsByPrice(Double low, Double high);
     Product fetchProductById(Long id);
 
     Product updateProduct(Product product, Long id);

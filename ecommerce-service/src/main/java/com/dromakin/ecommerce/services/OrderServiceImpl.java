@@ -13,6 +13,8 @@
 package com.dromakin.ecommerce.services;
 
 import com.dromakin.ecommerce.entities.Order;
+import com.dromakin.ecommerce.entities.Product;
+import com.dromakin.ecommerce.web.models.OrderFinalPrice;
 import com.dromakin.ecommerce.web.models.OrderStatus;
 import com.dromakin.ecommerce.repositories.OrderRepository;
 import com.dromakin.ecommerce.utils.OrderUtil;
@@ -30,12 +32,14 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
+    private final ProductService productService;
 
     private final OrderUtil orderUtil = new OrderUtilImpl();
 
     @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository) {
+    public OrderServiceImpl(OrderRepository orderRepository, ProductService productService) {
         this.orderRepository = orderRepository;
+        this.productService = productService;
     }
 
     @Override
@@ -93,16 +97,6 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public List<Order> getActiveOrdersAndId(Long id) {
-        return orderRepository.findByActiveAndId(true, id);
-    }
-
-    @Override
-    public List<Order> getArchiveOrdersAndId(Long id) {
-        return orderRepository.findByActiveAndId(false, id);
-    }
-
-    @Override
     public List<String> getOrderItemsById(Long id) {
         return orderRepository.findById(id).getItems();
     }
@@ -128,6 +122,22 @@ public class OrderServiceImpl implements OrderService {
             orderDb.setActive(false);
         }
         orderDb.setStatus(status);
-        return orderDb;
+        return orderRepository.save(orderDb);
+    }
+
+    // price
+
+    @Override
+    public OrderFinalPrice getFinalPrice(Long id) {
+        Order orderDb = orderRepository.findById(id);
+        double price = 0.0;
+        for (String code : orderDb.getItems()) {
+            Product product = productService.fetchProductsByCode(code);
+            price += product.getPrice();
+        }
+        return OrderFinalPrice.builder()
+                .id(id)
+                .price(price + orderUtil.getDeliveryFeeByCountItems(orderDb.getItems().size()))
+                .build();
     }
 }

@@ -81,7 +81,7 @@ public class InventoryServiceImpl implements InventoryService {
             inventoryDb.setAvailableQuantity(Inventory.getAvailableQuantity());
         }
 
-        return inventoryDb;
+        return inventoryRepository.save(inventoryDb);
     }
 
     @Override
@@ -92,25 +92,29 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public Inventory addInventoryStockById(Long id) {
         Inventory inventoryDb = inventoryRepository.findById(id);
-        return inventoryUtil.addInventoryStock(inventoryDb);
+        inventoryRepository.delete(id);
+        return inventoryRepository.save(inventoryUtil.addInventoryStock(inventoryDb));
     }
 
     @Override
     public Inventory addInventoryStockByCode(String code) {
         Inventory inventoryDb = inventoryRepository.findByProductCode(code);
-        return inventoryUtil.addInventoryStock(inventoryDb);
+        inventoryRepository.delete(inventoryDb.getId());
+        return inventoryRepository.save(inventoryUtil.addInventoryStock(inventoryDb));
     }
 
     @Override
     public Inventory sellInventoryStockById(Long id) {
         Inventory inventoryDb = inventoryRepository.findById(id);
-        return inventoryUtil.sellInventoryStock(inventoryDb);
+        inventoryRepository.delete(id);
+        return inventoryRepository.save(inventoryUtil.sellInventoryStock(inventoryDb));
     }
 
     @Override
     public Inventory sellInventoryStockByCode(String code) {
         Inventory inventoryDb = inventoryRepository.findByProductCode(code);
-        return inventoryUtil.sellInventoryStock(inventoryDb);
+        inventoryRepository.delete(inventoryDb.getId());
+        return inventoryRepository.save(inventoryUtil.sellInventoryStock(inventoryDb));
     }
 
     @Override

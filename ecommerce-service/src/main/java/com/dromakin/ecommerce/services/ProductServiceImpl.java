@@ -42,6 +42,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product fetchProductsByCode(String code) {
+        return productRepository.findByCode(code);
+    }
+
+    @Override
+    public List<Product> fetchProductsByPrice(Double low, Double high) {
+        return productRepository.findByPriceBetween(low, high);
+    }
+
+    @Override
     public List<Product> fetchProductsByManufacturerId(Long id) {
         return productRepository.findByManufacturer(id);
     }

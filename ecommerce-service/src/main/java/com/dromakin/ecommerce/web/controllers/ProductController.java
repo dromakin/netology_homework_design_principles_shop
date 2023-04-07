@@ -2,6 +2,7 @@ package com.dromakin.ecommerce.web.controllers;
 
 import com.dromakin.ecommerce.entities.Product;
 import com.dromakin.ecommerce.services.ProductService;
+import com.dromakin.ecommerce.web.models.ProductPriceBetween;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
@@ -100,6 +101,21 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         } else {
             return ResponseEntity.ok(product);
+        }
+    }
+
+
+    @PostMapping("/price")
+    public ResponseEntity<List<Product>> getByPrice(
+            @ApiParam(name = "Id of product", required = true)
+            @RequestBody ProductPriceBetween productPriceBetween
+    ) {
+        List<Product> productList = productService.fetchProductsByPrice(productPriceBetween.getLowPrice(), productPriceBetween.getHighPrice());
+
+        if (productList == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(productList);
         }
     }
 

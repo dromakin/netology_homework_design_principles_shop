@@ -18,4 +18,6 @@ import java.util.List;
 
 public interface OrderUtil {
     List<String> getProductCodesFromOrders(List<Order> orderList);
+
+    Double getDeliveryFeeByCountItems(Integer count);
 }

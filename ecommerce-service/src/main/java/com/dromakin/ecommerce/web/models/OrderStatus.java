@@ -34,4 +34,35 @@ public enum OrderStatus {
     OrderStatus(String status) {
         this.status = status;
     }
+
+    public static OrderStatus getStatusByString(String status) {
+
+        OrderStatus orderStatus = null;
+
+        if (status.equalsIgnoreCase(CHECKING.status)) {
+            orderStatus = CHECKING;
+        }
+
+        if (status.equalsIgnoreCase(WRAPPING.status)) {
+            orderStatus = WRAPPING;
+        }
+
+        if (status.equalsIgnoreCase(DELIVERY.status)) {
+            orderStatus = DELIVERY;
+        }
+
+        if (status.equalsIgnoreCase(DELIVERED.status)) {
+            orderStatus = DELIVERED;
+        }
+
+        if (status.equalsIgnoreCase(RETURNED.status)) {
+            orderStatus = RETURNED;
+        }
+
+        if (status.equalsIgnoreCase(CANCELED.status)) {
+            orderStatus = CANCELED;
+        }
+
+        return orderStatus == null ? CANCELED : orderStatus;
+    }
 }

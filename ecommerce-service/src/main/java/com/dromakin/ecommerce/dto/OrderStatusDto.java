@@ -18,5 +18,5 @@ import lombok.Data;
 @Data
 public class OrderStatusDto {
     private Long id;
-    private OrderStatus status;
+    private String status;
 }
