@@ -23,25 +23,23 @@
 6. Протестируйте работу программы. Не забывайте про правила форматирования кода (для автоформата можете выделить код в идее и нажать **Ctrl+Alt+L**).
 
 ## Применение
-### S - принцип единственной ответственности
-Класс должен выполнять только те функции, для которых он логически предназначен
+### S - принцип единственной ответственности (Single Responsibility Principle)
+Класс должен выполнять только те функции, для которых он логически предназначен.
 
-Любой класс из entities.
-
-Например: ecommerce-service/src/main/java/com/dromakin/ecommerce/entities/Inventory.java
+Пример:
+- [InventoryUtilImpl.java](ecommerce-service/src/main/java/com/dromakin/ecommerce/utils/InventoryUtilImpl.java)
+- [InventoryServiceImpl.java](ecommerce-service/src/main/java/com/dromakin/ecommerce/services/InventoryServiceImpl.java)
 
 ### O - принцип открытости/закрытости (Open Closed Principle)
 Программные сущности должны быть открыты для расширения, но закрыты для
 модификации.
 
-Это сервисы, например:
-
-ecommerce-service/src/main/java/com/dromakin/ecommerce/services/OrderService.java
+Например:
+- [OrderService.java](ecommerce-service/src/main/java/com/dromakin/ecommerce/services/OrderService.java)
 
 ### L - принцип замены Барбары Лисков (Liskov Substitution Principle)
 Наследуй только тогда, когда можешь играть роль за предка.
 
-Это utils.
 
 ### I - принцип сегрегации (разделения) интерфейса (Interface Segregation Principle)
 Много интерфейсов, специально предназначенных для клиентов, лучше, чем один
@@ -49,18 +47,20 @@ ecommerce-service/src/main/java/com/dromakin/ecommerce/services/OrderService.jav
 
 В utils, services много интерфейсов, которые скрывают реализацию методов.
 
+Например:
+- [CalculatorRatingProduct.java](ecommerce-service/src/main/java/com/dromakin/ecommerce/utils/CalculatorRatingProduct.java)
+- [CalculatorRatingProductImpl.java](ecommerce-service/src/main/java/com/dromakin/ecommerce/utils/CalculatorRatingProductImpl.java)
+
 ### D - принцип инверсии зависимостей (Dependency Inversion Principle)
 Всё зависит от абстракций (интерфейсов), а не от деталей реализации друг друга.
 
 Прекрасный пример это сервисы в spring boot приложении.
-Например:
 
-ecommerce-service/src/main/java/com/dromakin/ecommerce/services/ProductService.java
+Например:
+- [ProductService.java](ecommerce-service/src/main/java/com/dromakin/ecommerce/services/ProductService.java)
 
 ### Правило DRY (Don’t Repeat Yourself): не повторяй свой код
 
-Пример: ecommerce-service/src/main/java/com/dromakin/ecommerce/utils/InventoryUtilImpl.java
-
-Нужные функции для Inventory я вынес в этот класс.
+Нужные функции для [InventoryServiceImpl класса](ecommerce-service/src/main/java/com/dromakin/ecommerce/services/InventoryServiceImpl.java) я вынес в [InventoryUtilImpl.java](ecommerce-service/src/main/java/com/dromakin/ecommerce/utils/InventoryUtilImpl.java) класс.
 
 
