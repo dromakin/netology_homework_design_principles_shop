@@ -19,7 +19,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "inventory_stock")
+@Table(name = "inventory")
 public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

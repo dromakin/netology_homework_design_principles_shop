@@ -30,3 +30,31 @@ insert into products(id, code, name, description, price, manufacturer) VALUES
        (20, 'P3004', 'Cookie', 'Chocolate cookie', 15, 3),
        (21, 'P3005', 'Cookie', 'Biscuit cookie', 15, 3)
 ;
+
+DELETE FROM inventory;
+insert into inventory(id, productCode, availableQuantity, needQuantity) VALUES
+       (1, 'P1001', 10, 0),
+       (2, 'P1002', 15, 10),
+       (3, 'P1003', 0, 10),
+       (4, 'P1004', 25, 1),
+       (5, 'P1005', 10, 10),
+       (6, 'P1006', 25, 10),
+       (7, 'P1007', 20, 0),
+       (8, 'P1008', 0, 15),
+       (9, 'P2001', 10, 10),
+       (10, 'P2002', 16, 20),
+       (11, 'P2003', 22, 22),
+       (12, 'P2004', 27, 2),
+       (13, 'P2005', 25, 0),
+       (14, 'P2006', 25, 25),
+       (15, 'P2007', 0, 20),
+       (16, 'P2008', 25, 40),
+       (17, 'P3001', 0, 30),
+       (18, 'P3002', 50, 30),
+       (19, 'P3003', 20, 20),
+       (20, 'P3004', 15, 0),
+       (21, 'P3005', 0, 30)
+;
+
+DELETE FROM orders;
+
